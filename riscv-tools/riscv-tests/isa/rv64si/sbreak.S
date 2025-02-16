@@ -11,36 +11,61 @@
 #include "test_macros.h"
 
 RVTEST_RV64S
+
+
+
+
+
+
+
+
+
+
+
+
+
 RVTEST_CODE_BEGIN
 
 #ifdef __MACHINE_MODE
-  #define sscratch mscratch
-  #define sstatus mstatus
-  #define scause mcause
-  #define sepc mepc
-  #define sret mret
-  #define stvec_handler mtvec_handler
+#define sscratch mscratch
+#define sstatus mstatus
+#define scause mcause
+#define sepc mepc
+#define sret mret
+#define stvec_handler mtvec_handler
 #endif
 
-  li TESTNUM, 2
+  	li TESTNUM, 2
 
-  sbreak
-  j fail
+  	sbreak
+  	j fail
 
-  TEST_PASSFAIL
+  	TEST_PASSFAIL
 
-  .align 2
+.align 2
+
 stvec_handler:
-  li t1, CAUSE_BREAKPOINT
-  csrr t0, scause
-  bne t0, t1, fail
-  j pass
+
+  	li t1, CAUSE_BREAKPOINT
+  	csrr t0, scause
+  	bne t0, t1, fail
+  	j pass
 
 RVTEST_CODE_END
 
-  .data
+
+
+
+
+
+
+
+
+
+.data
+
 RVTEST_DATA_BEGIN
 
-  TEST_DATA
+  	TEST_DATA
 
 RVTEST_DATA_END

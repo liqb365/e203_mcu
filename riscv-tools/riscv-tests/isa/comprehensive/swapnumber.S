@@ -1,40 +1,45 @@
 # See LICENSE for license details.
 
 #*****************************************************************************
-# wfi.S
+# swapnumber.S
 #-----------------------------------------------------------------------------
 #
-# Test wait-for-interrupt instruction.
+# Swap number between two numbers.
 #
 
 #include "riscv_test.h"
 #include "test_macros.h"
 
-RVTEST_RV64S
-
-
-
+RVTEST_RV32M
 
 RVTEST_CODE_BEGIN
 
-  	# Make sure wfi doesn't halt the hart, even if interrupts are disabled
-  	csrc sstatus, SSTATUS_SIE
-  	csrs sie, SIP_SSIP
-  	csrs sip, SIP_SSIP
-  	wfi
+	li TESTNUM, 2
 
-  	RVTEST_PASS
+	# s2 = 123
+	li s2, 123
+
+	# s3 = 456
+	li s3, 456
+
+	# s4 = 456
+	li s4, 456
+
+	# s2 = s2 ^ s3
+	xor s2, s2, s3
+
+	# s3 = s2 ^ s3
+	xor s3, s2, s3
+
+	# s2 = s2 ^ s3
+	xor s2, s2, s3
+
+	# Pass or fail ?
+	bne s2, s4, fail
 
   	TEST_PASSFAIL
 
 RVTEST_CODE_END
-
-
-
-
-
-
-
 
 .data
 

@@ -1,40 +1,28 @@
 # See LICENSE for license details.
 
 #*****************************************************************************
-# wfi.S
+# demo.S
 #-----------------------------------------------------------------------------
 #
-# Test wait-for-interrupt instruction.
+# Demo code. We can develope any new program from here.
 #
 
 #include "riscv_test.h"
 #include "test_macros.h"
 
-RVTEST_RV64S
-
-
-
+RVTEST_RV32M
 
 RVTEST_CODE_BEGIN
 
-  	# Make sure wfi doesn't halt the hart, even if interrupts are disabled
-  	csrc sstatus, SSTATUS_SIE
-  	csrs sie, SIP_SSIP
-  	csrs sip, SIP_SSIP
-  	wfi
+	li TESTNUM, 2
 
-  	RVTEST_PASS
+	li x1, 1
+	li x2, 1
+	bne x1, x2, fail
 
   	TEST_PASSFAIL
 
 RVTEST_CODE_END
-
-
-
-
-
-
-
 
 .data
 

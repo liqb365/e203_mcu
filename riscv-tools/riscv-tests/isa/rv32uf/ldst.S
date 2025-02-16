@@ -11,6 +11,14 @@
 #include "test_macros.h"
 
 RVTEST_RV32UF
+
+
+
+
+
+
+
+
 RVTEST_CODE_BEGIN
 
   TEST_CASE(2, a0, 0x40000000, la a1, tdat; flw f1, 4(a1); fsw f1, 20(a1); lw a0, 20(a1))
@@ -20,12 +28,19 @@ RVTEST_CODE_BEGIN
 
 RVTEST_CODE_END
 
-  .data
+
+
+
+
+
+.data
+
 RVTEST_DATA_BEGIN
 
   TEST_DATA
 
 tdat:
+
 .word 0xbf800000
 .word 0x40000000
 .word 0x40400000

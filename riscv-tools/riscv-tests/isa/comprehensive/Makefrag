@@ -1,0 +1,16 @@
+#=======================================================================
+# Makefrag for rv32mi tests
+#-----------------------------------------------------------------------
+
+comprehensive_sc_tests = 	\
+	demo			\
+	sumas1			\
+	sumas2			\
+	fibonacci		\
+	swapnumber		\
+	pythagorean		\
+	ds				\
+
+comprehensive_p_tests = $(addprefix comprehensive-p-, $(comprehensive_sc_tests))
+
+spike32_tests += $(comprehensive_p_tests)

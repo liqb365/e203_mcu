@@ -1,40 +1,50 @@
 # See LICENSE for license details.
 
 #*****************************************************************************
-# wfi.S
+# sumas.S
 #-----------------------------------------------------------------------------
 #
-# Test wait-for-interrupt instruction.
+# Sum of an arithmetic sequence (from 1 to 100).
 #
 
 #include "riscv_test.h"
 #include "test_macros.h"
 
-RVTEST_RV64S
-
-
-
+RVTEST_RV32M
 
 RVTEST_CODE_BEGIN
 
-  	# Make sure wfi doesn't halt the hart, even if interrupts are disabled
-  	csrc sstatus, SSTATUS_SIE
-  	csrs sie, SIP_SSIP
-  	csrs sip, SIP_SSIP
-  	wfi
+	li TESTNUM, 2
 
-  	RVTEST_PASS
+	# Sum.
+	li s2, 0
+
+	# Index
+	li s3, 1
+
+	# Range
+	li s4, 101
+
+	# Result
+	li s5, 5050
+
+loop:
+
+	# Add
+	add s2, s2, s3
+
+	# Index increment.
+	addi s3, s3, 1
+
+	# Branch.
+	bne s3, s4, loop
+
+	# Pass or fail ?
+	bne s2, s5, fail
 
   	TEST_PASSFAIL
 
 RVTEST_CODE_END
-
-
-
-
-
-
-
 
 .data
 
