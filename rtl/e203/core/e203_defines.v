@@ -160,6 +160,13 @@
    `define E203_HAS_NICE
    //`define E203_HAS_CSR_NICE 
 `endif//}
+`ifdef E203_CFG_HAS_NICE_CORE//{
+   `define E203_HAS_NICE_CORE
+`endif//}
+`ifdef E203_CFG_HAS_NICE_MATRIX//{
+   `define E203_HAS_NICE
+   `define E203_HAS_NICE_MATRIX
+`endif//}
 
 `ifdef E203_CFG_HAS_LOCKSTEP//{
 `endif//}

@@ -24,7 +24,8 @@
 // ====================================================================
 `include "e203_defines.v"
 
-`ifdef E203_HAS_NICE//{
+`ifdef E203_HAS_NICE_CORE//{
+
 module e203_subsys_nice_core (
     // System	
     input                         nice_clk             ,
