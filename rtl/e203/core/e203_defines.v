@@ -168,6 +168,11 @@
    `define E203_HAS_NICE_MATRIX
 `endif//}
 
+`ifdef E203_CFG_HAS_NICE_VECTOR//{
+   `define E203_HAS_NICE
+   `define E203_HAS_NICE_VECTOR
+`endif//}
+
 `ifdef E203_CFG_HAS_LOCKSTEP//{
 `endif//}
 
